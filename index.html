@@ -229,6 +229,7 @@
   @keyframes float2{0%,100%{transform:rotateY(5deg) rotateX(-2deg) translateY(0px);}50%{transform:rotateY(3deg) rotateX(-3deg) translateY(10px);}}
   @keyframes float3{0%,100%{transform:rotateY(-3deg) rotateX(4deg) translateZ(40px) translateY(0);}50%{transform:rotateY(-1deg) rotateX(3deg) translateZ(40px) translateY(-8px);}}
   @media(max-width:840px){
+    .hero{min-height:auto;padding-top:110px;padding-bottom:64px;}
     .hero__inner{grid-template-columns:1fr;gap:48px;}
     .hero__visual{height:320px;order:-1;}
     .hero p.lede{max-width:100%;}
@@ -261,11 +262,17 @@
     min-height:300px;
   }
   .swatch__sample{
-    height:150px;position:relative;
+    height:150px;position:relative;overflow:hidden;
     border-bottom:1px solid var(--frost);
   }
+  .swatch__sample img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    z-index:0;transition:transform .5s ease;
+  }
+  .swatch__sample img:not([src]), .swatch__sample img[src=""]{display:none;}
+  .swatch:hover .swatch__sample img{transform:scale(1.06);}
   .swatch__sample::after{
-    content:'';position:absolute;inset:8px;border-radius:10px;
+    content:'';position:absolute;inset:8px;border-radius:10px;z-index:2;
     box-shadow: inset 0 0 0 1px rgba(159,227,206,0.55);
   }
   .swatch__body{padding:22px 22px 26px;flex:1;display:flex;flex-direction:column;}
@@ -274,6 +281,14 @@
   .swatch__body p{font-size:0.93rem;color:#5C6B7A;line-height:1.65;flex:1;}
 
   /* sample finishes */
+  /* sample finishes — sit above photo as a subtle brand-tint overlay */
+  .sample--clear::before,
+  .sample--frosted::before,
+  .sample--framed::before,
+  .sample--mirror::before,
+  .sample--repair::before{
+    z-index:1;opacity:0.32;
+  }
   .sample--clear{
     background:linear-gradient(135deg, rgba(45,111,181,0.10), rgba(255,255,255,0.6));
   }
@@ -329,6 +344,7 @@
   }
   .gallery-item img{
     width:100%;height:100%;object-fit:cover;display:block;
+    position:relative;z-index:1;
     transition:transform .5s ease;
   }
   .gallery-item:hover img{transform:scale(1.06);}
@@ -537,7 +553,9 @@
     </div>
     <div class="swatch-grid">
       <div class="swatch reveal">
-        <div class="swatch__sample sample--clear"></div>
+        <div class="swatch__sample sample--clear">
+          <img src="IMG-20260612-WA0031.jpg" alt="Glass office partition" onerror="this.removeAttribute('src')">
+        </div>
         <div class="swatch__body">
           <span class="swatch__num">01 — PARTITIONS</span>
           <h3>Glass Partitions</h3>
@@ -545,7 +563,9 @@
         </div>
       </div>
       <div class="swatch reveal">
-        <div class="swatch__sample sample--frosted"></div>
+        <div class="swatch__sample sample--frosted">
+          <img src="IMG-20260612-WA0040.jpg" alt="Frosted glass enclosure" onerror="this.removeAttribute('src')">
+        </div>
         <div class="swatch__body">
           <span class="swatch__num">02 — SHOWER ENCLOSURES</span>
           <h3>Shower Enclosures</h3>
@@ -553,7 +573,9 @@
         </div>
       </div>
       <div class="swatch reveal">
-        <div class="swatch__sample sample--framed"></div>
+        <div class="swatch__sample sample--framed">
+          <img src="IMG-20260612-WA0036.jpg" alt="Glass door and window frame" onerror="this.removeAttribute('src')">
+        </div>
         <div class="swatch__body">
           <span class="swatch__num">03 — WINDOWS &amp; DOORS</span>
           <h3>Windows &amp; Doors</h3>
@@ -561,7 +583,9 @@
         </div>
       </div>
       <div class="swatch reveal">
-        <div class="swatch__sample sample--mirror"></div>
+        <div class="swatch__sample sample--mirror">
+          <img src="IMG-20260612-WA0024.jpg" alt="Mirror installation" onerror="this.removeAttribute('src')">
+        </div>
         <div class="swatch__body">
           <span class="swatch__num">04 — MIRRORS</span>
           <h3>Mirrors</h3>
@@ -569,7 +593,9 @@
         </div>
       </div>
       <div class="swatch reveal">
-        <div class="swatch__sample sample--repair"></div>
+        <div class="swatch__sample sample--repair">
+          <img src="IMG-20260612-WA0032.jpg" alt="Glass installation and repair on site" onerror="this.removeAttribute('src')">
+        </div>
         <div class="swatch__body">
           <span class="swatch__num">05 — REPAIRS</span>
           <h3>Glass Repairs</h3>
