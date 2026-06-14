@@ -3,849 +3,1177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Millennium Glasses Ltd — Clear Vision. Quality Solution.</title>
+<title>Millennium Glasses Ltd — Premium Glass Specialists, Nairobi</title>
+<meta name="description" content="Nairobi's premium glass supply and installation specialists. Partitions, mirrors, shower enclosures, windows and doors. Embakasi, Nairobi.">
 <link rel="icon" href="IMG-20260612-WA0023.jpg" type="image/jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#0A1A2F;
-    --navy-soft:#102742;
-    --blue:#2D6FB5;
-    --blue-light:#7FB8E8;
-    --ice:#F3F7FA;
-    --frost:#DCE7EF;
-    --edge:#9FE3CE;
-    --amber:#D9A35C;
-    --graphite:#16222F;
-    --line: rgba(255,255,255,0.12);
-    --max:1180px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'DM Sans', sans-serif;
-    color:var(--graphite);
-    background:var(--ice);
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  h1,h2,h3{font-family:'Space Grotesk', sans-serif;}
-  .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.22em;
-    text-transform:uppercase;
-    font-weight:500;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{display:block;max-width:100%;}
+:root{
+  --bg:#0B0B0F;
+  --bg-soft:#111116;
+  --bg-card:rgba(255,255,255,0.035);
+  --border:rgba(255,255,255,0.07);
+  --border-hi:rgba(255,255,255,0.13);
+  --gold:#C9A96E;
+  --gold-light:#E8D5A3;
+  --gold-glow:rgba(201,169,110,0.22);
+  --teal:#1CCFB8;
+  --white:#FAFAF8;
+  --muted:rgba(250,250,248,0.50);
+  --max:1260px;
+  --nav-h:72px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  cursor:none;
+}
+@media(pointer:coarse){body{cursor:auto;}}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
 
-  /* ============ NAV ============ */
-  .nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 6vw;
-    background:rgba(10,26,47,0.55);
-    backdrop-filter:blur(14px) saturate(160%);
-    -webkit-backdrop-filter:blur(14px) saturate(160%);
-    border-bottom:1px solid var(--line);
-    transition:padding .3s ease, background .3s ease;
-  }
-  .nav.scrolled{padding:10px 6vw;background:rgba(10,26,47,0.85);}
-  .nav__brand{
-    display:flex;align-items:center;gap:10px;
-    color:#fff;font-family:'Space Grotesk',sans-serif;
-    font-weight:700;font-size:1.05rem;letter-spacing:0.04em;
-  }
-  .nav__mark{
-    width:32px;height:32px;border-radius:6px;
-    background:linear-gradient(135deg, var(--blue-light), var(--blue) 55%, var(--navy));
-    position:relative;flex-shrink:0;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
-    overflow:hidden;
-  }
-  .nav__mark::after{
-    content:'';position:absolute;inset:5px;
-    border:1.5px solid rgba(255,255,255,0.6);
-    border-radius:3px;
-  }
-  .nav__mark img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    border-radius:6px;
-  }
-  .nav__mark img:not([src]), .nav__mark img[src=""]{display:none;}
-  .nav__mark:has(img[src]):not(:has(img[src=""]))::after{display:none;}
+/* ─── CURSOR ─────────────────────────────── */
+#c-dot{
+  position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
+  width:8px;height:8px;border-radius:50%;background:var(--white);
+  transform:translate(-50%,-50%);transition:transform .1s;
+  mix-blend-mode:difference;
+}
+#c-ring{
+  position:fixed;top:0;left:0;z-index:9998;pointer-events:none;
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.45);
+  transform:translate(-50%,-50%);
+  transition:width .3s ease,height .3s ease,border-color .3s ease;
+}
+#c-ring.hov{width:58px;height:58px;border-color:var(--gold);}
 
-  /* ============ INTRO ============ */
-  .intro{
-    position:fixed;inset:0;z-index:300;display:flex;
-  }
-  .intro__panel{
-    flex:1;position:relative;overflow:hidden;
-    background:linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 100%);
-    transition:transform 1s cubic-bezier(.77,0,.18,1);
-  }
-  .intro__panel::after{
-    content:'';position:absolute;top:0;bottom:0;width:2px;
-    background:linear-gradient(180deg, transparent, var(--edge) 50%, transparent);
-    opacity:0.6;
-  }
-  .intro__panel--left::after{right:0;}
-  .intro__panel--right::after{left:0;}
-  .intro__center{
-    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
-    color:#fff;text-align:center;transition:opacity .5s ease, transform .5s ease;
-  }
-  .intro__logo{
-    width:62px;height:62px;border-radius:50%;object-fit:cover;
-    box-shadow:0 0 0 1px rgba(159,227,206,0.5), 0 20px 50px -20px rgba(0,0,0,0.7);
-  }
-  .intro__logo[src=""], .intro__logo:not([src]){display:none;}
-  .intro__word{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;
-    letter-spacing:0.3em;font-size:0.9rem;
-  }
-  .intro__tag{color:var(--edge);}
-  .intro.is-leaving .intro__panel--left{transform:translateX(-100%);}
-  .intro.is-leaving .intro__panel--right{transform:translateX(100%);}
-  .intro.is-leaving .intro__center{opacity:0;transform:scale(0.94);}
-  .intro.is-hidden{display:none;}
-  body.intro-active{overflow:hidden;}
+/* ─── LOADER ──────────────────────────────── */
+.loader{position:fixed;inset:0;z-index:500;display:flex;}
+.loader__p{
+  flex:1;transition:transform 1.1s cubic-bezier(.76,0,.24,1);
+  background:linear-gradient(160deg,#0D0D15,#181424);
+}
+.loader__p--r{background:linear-gradient(160deg,#181424,#0D0D15);}
+.loader__c{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+  text-align:center;transition:opacity .4s ease,transform .4s ease;
+}
+.loader__logo{
+  width:72px;height:72px;border-radius:50%;object-fit:cover;
+  border:1.5px solid var(--gold);
+  box-shadow:0 0 48px rgba(201,169,110,.28);
+  animation:lp 2.4s ease-in-out infinite;
+}
+.loader__logo:not([src]),.loader__logo[src=""]{
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(201,169,110,.2),rgba(28,207,184,.08));
+  font-size:1.6rem;font-weight:700;color:var(--gold);
+}
+@keyframes lp{0%,100%{box-shadow:0 0 48px rgba(201,169,110,.28);}50%{box-shadow:0 0 80px rgba(201,169,110,.55);}}
+.loader__name{
+  font-weight:700;font-size:.82rem;letter-spacing:.35em;text-transform:uppercase;
+}
+.loader__tag{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  letter-spacing:.22em;color:var(--gold);text-transform:uppercase;
+}
+.loader__prog{width:120px;height:1px;background:var(--border-hi);position:relative;overflow:hidden;}
+.loader__bar{
+  position:absolute;inset-block:0;left:0;width:0;background:var(--gold);
+  transition:width 1.5s cubic-bezier(.4,0,.2,1);
+}
+.loader.leaving .loader__p--l{transform:translateX(-100%);}
+.loader.leaving .loader__p--r{transform:translateX(100%);}
+.loader.leaving .loader__c{opacity:0;transform:scale(.93);}
+.loader.gone{display:none;}
+body.loading{overflow:hidden;}
 
-  .nav__links{display:flex;gap:34px;align-items:center;}
-  .nav__links a{
-    color:rgba(255,255,255,0.78);font-size:0.88rem;font-weight:500;
-    transition:color .2s ease;
+/* ─── NAV ─────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;
+  transition:background .4s,backdrop-filter .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(11,11,15,.93);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  border-bottom-color:var(--border);
+}
+.nav__brand{
+  display:flex;align-items:center;gap:11px;
+  font-weight:700;font-size:.93rem;letter-spacing:.05em;
+}
+.nav__lw{
+  width:36px;height:36px;border-radius:8px;overflow:hidden;flex-shrink:0;
+  border:1.5px solid rgba(201,169,110,.38);
+  background:linear-gradient(135deg,rgba(201,169,110,.15),rgba(28,207,184,.05));
+}
+.nav__lw img{width:100%;height:100%;object-fit:cover;}
+.nav__links{display:flex;gap:34px;align-items:center;}
+.nav__links a{
+  font-size:.875rem;font-weight:500;color:var(--muted);
+  transition:color .2s;
+}
+.nav__links a:hover{color:var(--white);}
+.nav__cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:#0B0B0F;
+  padding:10px 22px;border-radius:100px;
+  font-size:.84rem;font-weight:700;letter-spacing:.02em;
+  transition:transform .25s,box-shadow .25s,background .25s;
+  white-space:nowrap;
+}
+.nav__cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px -8px rgba(201,169,110,.48);
+  background:var(--gold-light);
+}
+.nav__cta svg{width:16px;height:16px;fill:currentColor;flex-shrink:0;}
+.nav__burg{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:none;padding:8px;z-index:101;
+}
+.nav__burg span{display:block;width:24px;height:1.5px;background:var(--white);border-radius:2px;transition:transform .3s,opacity .3s;}
+.nav__burg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav__burg.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav__burg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+@media(max-width:900px){
+  .nav__links{
+    position:fixed;inset:0 0 0 auto;width:80%;max-width:340px;height:100dvh;
+    flex-direction:column;align-items:flex-start;justify-content:center;
+    padding:0 44px;gap:32px;
+    background:rgba(13,13,20,.97);backdrop-filter:blur(24px);
+    transform:translateX(100%);transition:transform .4s cubic-bezier(.76,0,.24,1);
+    border-left:1px solid var(--border);
   }
-  .nav__links a:hover{color:#fff;}
-  .nav__cta{
-    background:var(--edge);color:var(--navy);
-    padding:10px 20px;border-radius:100px;
-    font-size:0.85rem;font-weight:700;
-    transition:transform .2s ease, box-shadow .2s ease;
-    white-space:nowrap;
-  }
-  .nav__cta:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px var(--edge);}
-  .nav__toggle{display:none;}
-  @media(max-width:840px){
-    .nav__links{
-      position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;height:100vh;
-      background:var(--navy);flex-direction:column;justify-content:center;
-      align-items:flex-start;gap:28px;padding:0 40px;
-      transform:translateX(100%);transition:transform .35s ease;
-      border-left:1px solid var(--line);
-    }
-    .nav__links.open{transform:translateX(0);}
-    .nav__links a{font-size:1.15rem;}
-    .nav__toggle{
-      display:flex;flex-direction:column;gap:5px;background:none;border:none;
-      cursor:pointer;z-index:101;padding:8px;
-    }
-    .nav__toggle span{width:22px;height:2px;background:#fff;border-radius:2px;}
-  }
+  .nav__links.open{transform:translateX(0);}
+  .nav__links a{font-size:1.25rem;}
+  .nav__burg{display:flex;}
+}
 
-  /* ============ HERO ============ */
-  .hero{
-    position:relative;
-    min-height:100vh;
-    background:
-      radial-gradient(circle at 78% 18%, rgba(127,184,232,0.18), transparent 45%),
-      linear-gradient(160deg, var(--navy) 0%, var(--navy-soft) 60%, #0d2238 100%);
-    color:#fff;
-    display:flex;align-items:center;
-    padding:140px 6vw 100px;
-    overflow:hidden;
-  }
-  .hero__inner{
-    width:100%;max-width:var(--max);margin:0 auto;
-    display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center;
-  }
-  .hero__eyebrow{color:var(--edge);margin-bottom:22px;display:flex;align-items:center;gap:10px;}
-  .hero__eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--edge);display:inline-block;}
-  .hero h1{
-    font-size:clamp(2.6rem, 5.4vw, 4.4rem);
-    line-height:1.05;font-weight:700;letter-spacing:-0.01em;
-    margin-bottom:24px;
-  }
-  .hero h1 em{
-    font-style:normal;color:var(--edge);
-    position:relative;
-  }
-  .hero p.lede{
-    font-size:1.08rem;line-height:1.7;color:rgba(255,255,255,0.72);
-    max-width:480px;margin-bottom:38px;
-  }
-  .hero__ctas{display:flex;gap:16px;flex-wrap:wrap;}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:15px 28px;border-radius:100px;font-weight:700;font-size:0.95rem;
-    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-  }
-  .btn--primary{background:var(--edge);color:var(--navy);}
-  .btn--primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px -10px var(--edge);}
-  .btn--ghost{border:1px solid rgba(255,255,255,0.28);color:#fff;}
-  .btn--ghost:hover{background:rgba(255,255,255,0.08);}
+/* ─── HERO ────────────────────────────────── */
+.hero{
+  position:relative;min-height:100dvh;
+  display:grid;grid-template-columns:1fr 1fr;
+  overflow:hidden;
+}
+.hero__txt{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(var(--nav-h) + 64px) 5vw 80px;
+  background:var(--bg);
+}
+.hero__ey{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:28px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero__ey::before{content:'';width:28px;height:1px;background:var(--gold);flex-shrink:0;}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.4rem,5.2vw,5.8rem);
+  font-weight:300;line-height:1.02;letter-spacing:-.02em;
+  margin-bottom:30px;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero h1 .ln{display:block;overflow:hidden;}
+.hero h1 .ln span{
+  display:block;
+  transform:translateY(100%);
+  animation:slideUp .95s cubic-bezier(.23,1,.32,1) both;
+}
+.hero h1 .ln:nth-child(1) span{animation-delay:.2s;}
+.hero h1 .ln:nth-child(2) span{animation-delay:.34s;}
+.hero h1 .ln:nth-child(3) span{animation-delay:.48s;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.hero__desc{
+  font-size:1rem;line-height:1.76;color:var(--muted);
+  max-width:420px;margin-bottom:44px;
+  opacity:0;animation:fIn .9s .72s ease both;
+}
+@keyframes fIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.hero__ctas{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fIn .9s .9s ease both;}
+.hero__scroll{
+  position:absolute;bottom:36px;left:5vw;
+  display:flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  opacity:0;animation:fIn 1s 1.2s ease both;
+}
+.scroll-ln{width:1px;height:48px;background:linear-gradient(180deg,var(--gold),transparent);animation:sAnim 2.2s ease-in-out infinite;}
+@keyframes sAnim{0%,100%{opacity:.4;transform:scaleY(.55);}50%{opacity:1;transform:scaleY(1);}}
+.hero__img{position:relative;overflow:hidden;}
+.hero__img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.06);
+  animation:imgRev 1.9s cubic-bezier(.23,1,.32,1) .25s both;
+}
+@keyframes imgRev{
+  from{transform:scale(1.16);clip-path:inset(0 100% 0 0);}
+  to{transform:scale(1.06);clip-path:inset(0 0% 0 0);}
+}
+.hero__img-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(11,11,15,.55) 0%,transparent 55%),
+             linear-gradient(180deg,transparent 55%,rgba(11,11,15,.35) 100%);
+  z-index:1;
+}
+.hero__badge{
+  position:absolute;bottom:36px;right:36px;z-index:2;
+  background:rgba(11,11,15,.72);backdrop-filter:blur(14px);
+  border:1px solid var(--border-hi);border-radius:18px;
+  padding:20px 26px;text-align:center;
+  opacity:0;animation:fIn .8s 1.4s ease both;
+}
+.hero__badge .bnum{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;
+}
+.hero__badge .blbl{font-size:.74rem;color:var(--muted);letter-spacing:.08em;margin-top:4px;}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;grid-template-rows:auto 56vw;}
+  .hero__txt{padding:calc(var(--nav-h)+40px) 6vw 48px;}
+  .hero__img{min-height:56vw;}
+  .hero__desc{max-width:100%;}
+  .hero h1{font-size:clamp(2.7rem,9vw,3.8rem);}
+  .hero__scroll{display:none;}
+}
 
-  /* hero glass pane visual */
-  .hero__visual{
-    position:relative;height:440px;
-    perspective:1400px;
-  }
-  .pane{
-    position:absolute;border-radius:14px;
-    border:1px solid rgba(255,255,255,0.22);
-    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.6), inset 0 0 40px rgba(255,255,255,0.04);
-  }
-  .pane--a{
-    width:78%;height:78%;top:0;right:0;
-    background:linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 40%, rgba(45,111,181,0.18) 100%);
-    backdrop-filter: blur(2px);
-    transform: rotateY(-6deg) rotateX(2deg);
-    animation: float1 9s ease-in-out infinite;
-  }
-  .pane--a::before{
-    content:'';position:absolute;inset:0;border-radius:14px;
-    background:linear-gradient(115deg, rgba(255,255,255,0.35) 0%, transparent 18%, transparent 82%, rgba(159,227,206,0.25) 100%);
-  }
-  .pane--b{
-    width:58%;height:58%;bottom:0;left:0;
-    background:linear-gradient(135deg, rgba(159,227,206,0.14), rgba(255,255,255,0.03));
-    backdrop-filter: blur(1px);
-    transform: rotateY(5deg) rotateX(-2deg);
-    animation: float2 11s ease-in-out infinite;
-  }
-  .pane--b::before{
-    content:'';position:absolute;inset:0;border-radius:14px;
-    background:linear-gradient(115deg, rgba(255,255,255,0.28) 0%, transparent 22%);
-  }
-  .pane--c{
-    width:36%;height:36%;top:30%;left:6%;
-    background:linear-gradient(135deg, rgba(255,255,255,0.16), rgba(45,111,181,0.10));
-    transform: rotateY(-3deg) rotateX(4deg) translateZ(40px);
-    animation: float3 8s ease-in-out infinite;
-  }
-  @keyframes float1{0%,100%{transform:rotateY(-6deg) rotateX(2deg) translateY(0px);}50%{transform:rotateY(-4deg) rotateX(1deg) translateY(-12px);}}
-  @keyframes float2{0%,100%{transform:rotateY(5deg) rotateX(-2deg) translateY(0px);}50%{transform:rotateY(3deg) rotateX(-3deg) translateY(10px);}}
-  @keyframes float3{0%,100%{transform:rotateY(-3deg) rotateX(4deg) translateZ(40px) translateY(0);}50%{transform:rotateY(-1deg) rotateX(3deg) translateZ(40px) translateY(-8px);}}
-  @media(max-width:840px){
-    .hero{min-height:auto;padding-top:110px;padding-bottom:64px;}
-    .hero__inner{grid-template-columns:1fr;gap:48px;}
-    .hero__visual{height:320px;order:-1;}
-    .hero p.lede{max-width:100%;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .pane--a,.pane--b,.pane--c{animation:none;}
-  }
+/* ─── BUTTONS ─────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 30px;border-radius:100px;
+  font-size:.9rem;font-weight:600;letter-spacing:.02em;
+  transition:all .25s ease;white-space:nowrap;
+}
+.btn--gold{background:var(--gold);color:#0B0B0F;}
+.btn--gold:hover{transform:translateY(-2px);box-shadow:0 14px 36px -10px rgba(201,169,110,.52);background:var(--gold-light);}
+.btn--outline{border:1.5px solid var(--border-hi);color:var(--white);}
+.btn--outline:hover{background:var(--bg-card);border-color:rgba(255,255,255,.26);}
+.btn svg{width:18px;height:18px;fill:currentColor;flex-shrink:0;}
 
-  /* ============ SECTION SHELLS ============ */
-  section{padding:108px 6vw;}
-  .section__head{max-width:660px;margin-bottom:64px;}
-  .section__head .eyebrow{color:var(--blue);margin-bottom:14px;display:block;}
-  .section__head h2{
-    font-size:clamp(1.9rem, 3.4vw, 2.6rem);font-weight:700;line-height:1.18;
-    margin-bottom:16px;
-  }
-  .section__head p{color:#5C6B7A;font-size:1.02rem;line-height:1.7;}
-  .container{max-width:var(--max);margin:0 auto;}
+/* ─── MARQUEE ─────────────────────────────── */
+.mq{background:var(--gold);padding:13px 0;overflow:hidden;display:flex;}
+.mq-track{
+  display:flex;white-space:nowrap;
+  animation:mq 24s linear infinite;
+}
+.mq-track:hover{animation-play-state:paused;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.mq-item{
+  display:inline-flex;align-items:center;gap:26px;padding:0 26px;
+  font-family:'JetBrains Mono',monospace;font-size:.76rem;
+  font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#0B0B0F;
+}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:rgba(11,11,15,.4);}
 
-  /* ============ SERVICES — glass swatches (signature) ============ */
-  .services{background:var(--ice);}
-  .swatch-grid{
-    display:grid;grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
-    gap:22px;
-  }
-  .swatch{
-    position:relative;border-radius:18px;overflow:hidden;
-    border:1px solid var(--frost);background:#fff;
-    display:flex;flex-direction:column;
-    min-height:300px;
-  }
-  .swatch__sample{
-    height:150px;position:relative;overflow:hidden;
-    border-bottom:1px solid var(--frost);
-  }
-  .swatch__sample img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    z-index:0;transition:transform .5s ease;
-  }
-  .swatch__sample img:not([src]), .swatch__sample img[src=""]{display:none;}
-  .swatch:hover .swatch__sample img{transform:scale(1.06);}
-  .swatch__sample::after{
-    content:'';position:absolute;inset:8px;border-radius:10px;z-index:2;
-    box-shadow: inset 0 0 0 1px rgba(159,227,206,0.55);
-  }
-  .swatch__body{padding:22px 22px 26px;flex:1;display:flex;flex-direction:column;}
-  .swatch__num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#9AA8B6;letter-spacing:0.15em;margin-bottom:10px;}
-  .swatch__body h3{font-size:1.18rem;margin-bottom:10px;}
-  .swatch__body p{font-size:0.93rem;color:#5C6B7A;line-height:1.65;flex:1;}
+/* ─── SECTION HEAD ─────────────────────────── */
+.sh{max-width:700px;}
+.sh-ey{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.67rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.sh-ey::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0;}
+.sh h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,4vw,3.6rem);
+  font-weight:300;line-height:1.1;margin-bottom:14px;
+}
+.sh h2 em{font-style:italic;color:var(--gold);}
+.sh p{font-size:1rem;color:var(--muted);line-height:1.76;max-width:520px;}
 
-  /* sample finishes */
-  /* sample finishes — sit above photo as a subtle brand-tint overlay */
-  .sample--clear::before,
-  .sample--frosted::before,
-  .sample--framed::before,
-  .sample--mirror::before,
-  .sample--repair::before{
-    z-index:1;opacity:0.32;
-  }
-  .sample--clear{
-    background:linear-gradient(135deg, rgba(45,111,181,0.10), rgba(255,255,255,0.6));
-  }
-  .sample--clear::before{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(120deg, rgba(255,255,255,0.7) 0%, transparent 30%, transparent 70%, rgba(45,111,181,0.12) 100%);
-  }
-  .sample--frosted{
-    background:linear-gradient(135deg, var(--frost), #fff 70%);
-    backdrop-filter:blur(6px);
-  }
-  .sample--frosted::before{
-    content:'';position:absolute;inset:0;
-    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.5) 0 6px, rgba(220,231,239,0.3) 6px 12px);
-    filter:blur(2px);
-  }
-  .sample--framed{
-    background:linear-gradient(135deg, rgba(45,111,181,0.08), #fff 65%);
-  }
-  .sample--framed::before{
-    content:'';position:absolute;inset:14px;border:6px solid var(--navy-soft);border-radius:4px;
-    background:linear-gradient(120deg, rgba(255,255,255,0.65), transparent 55%);
-  }
-  .sample--mirror{
-    background:linear-gradient(150deg, #cfd9e3 0%, #8fa3b8 35%, #e8eef3 55%, #aab8c6 80%, #d8e1e8 100%);
-  }
-  .sample--mirror::before{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(105deg, rgba(255,255,255,0.8) 0%, transparent 18%, transparent 60%, rgba(255,255,255,0.4) 100%);
-  }
-  .sample--repair{
-    background:linear-gradient(135deg, rgba(217,163,92,0.18), #fff 70%);
-  }
-  .sample--repair::before{
-    content:'';position:absolute;inset:0;
-    background:
-      linear-gradient(120deg, rgba(255,255,255,0.6) 0%, transparent 30%),
-      linear-gradient(78deg, transparent 48%, rgba(217,163,92,0.55) 49%, rgba(217,163,92,0.55) 50%, transparent 51%);
-  }
+/* ─── SERVICES ────────────────────────────── */
+.services{background:var(--bg);padding:120px 0;}
+.services .sh{padding:0 5vw;margin-bottom:68px;}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(268px,1fr));
+  gap:18px;padding:0 5vw;
+}
+@media(min-width:1200px){.svc-grid{grid-template-columns:repeat(5,1fr);}}
+.svc-card{
+  position:relative;border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);background:var(--bg-card);
+  transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;
+  cursor:none;
+}
+.svc-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 36px 68px -20px rgba(0,0,0,.65),0 0 0 1px var(--gold);
+  border-color:var(--gold);
+}
+.svc-img{height:210px;position:relative;overflow:hidden;}
+.svc-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.svc-card:hover .svc-img img{transform:scale(1.09);}
+.svc-img-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 35%,rgba(11,11,15,.7) 100%);
+}
+.svc-num{
+  position:absolute;top:14px;left:14px;z-index:1;
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;
+  color:var(--gold);background:rgba(11,11,15,.62);
+  padding:4px 10px;border-radius:100px;border:1px solid rgba(201,169,110,.3);
+}
+.svc-body{padding:22px 24px 28px;}
+.svc-body h3{font-size:1.08rem;font-weight:700;margin-bottom:10px;}
+.svc-body p{font-size:.87rem;color:var(--muted);line-height:1.65;}
+.svc-link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:16px;font-size:.8rem;font-weight:600;
+  color:var(--gold);letter-spacing:.05em;
+  transition:gap .2s ease;
+}
+.svc-card:hover .svc-link{gap:11px;}
+.svc-link svg{width:14px;height:14px;stroke:var(--gold);stroke-width:2;fill:none;}
 
-  /* ============ GALLERY ============ */
-  .gallery{background:#fff;}
-  .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    grid-auto-rows:170px;
-    gap:14px;
-  }
-  .gallery-item{
-    position:relative;border-radius:14px;overflow:hidden;
-    border:1px solid var(--frost);
-    background:linear-gradient(135deg, rgba(45,111,181,0.08), var(--frost) 70%);
-  }
-  .gallery-item img{
-    width:100%;height:100%;object-fit:cover;display:block;
-    position:relative;z-index:1;
-    transition:transform .5s ease;
-  }
-  .gallery-item:hover img{transform:scale(1.06);}
-  .gallery-item .ph{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    flex-direction:column;gap:6px;color:#9AA8B6;text-align:center;padding:10px;
-  }
-  .gallery-item .ph .eyebrow{color:#9AA8B6;}
-  .gallery-item .ph span.file{
-    font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--blue);
-  }
-  .gallery-item img:not([src]), .gallery-item img[src=""]{display:none;}
-  .gallery-item .cap{
-    position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
-    background:linear-gradient(0deg, rgba(10,26,47,0.82), transparent);
-    color:#fff;font-size:0.85rem;font-weight:600;
-    opacity:0;transform:translateY(8px);transition:opacity .3s ease, transform .3s ease;
-  }
-  .gallery-item:hover .cap{opacity:1;transform:translateY(0);}
-  .g-tall{grid-row:span 2;}
-  .g-wide{grid-column:span 2;}
-  @media(max-width:840px){
-    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
-    .g-wide{grid-column:span 2;}
-  }
-  @media(max-width:520px){
-    .gallery-grid{grid-template-columns:repeat(1,1fr);}
-    .g-wide,.g-tall{grid-column:span 1;grid-row:span 1;}
-  }
+/* ─── SHOWCASE ────────────────────────────── */
+.showcase{
+  background:var(--bg-soft);
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.sc-img{position:relative;min-height:600px;overflow:hidden;}
+.sc-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 8s ease;
+}
+.showcase:hover .sc-img img{transform:scale(1.04);}
+.sc-img-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 60%,rgba(17,17,22,.85) 100%);
+}
+.sc-txt{
+  padding:88px 5vw 88px 64px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.sc-txt h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,3.4vw,3.2rem);
+  font-weight:300;line-height:1.12;margin-bottom:14px;
+}
+.sc-txt h2 em{font-style:italic;color:var(--gold);}
+.sc-txt .sc-desc{font-size:1rem;color:var(--muted);line-height:1.76;max-width:420px;}
+.sc-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;
+  margin:40px 0 48px;
+}
+.sc-stat .sn{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;font-weight:300;color:var(--gold);line-height:1;
+}
+.sc-stat .sl{font-size:.81rem;color:var(--muted);margin-top:5px;letter-spacing:.04em;}
+@media(max-width:860px){
+  .showcase{grid-template-columns:1fr;}
+  .sc-img{min-height:62vw;order:-1;}
+  .sc-img-ov{background:linear-gradient(180deg,transparent 55%,rgba(17,17,22,.7) 100%);}
+  .sc-txt{padding:56px 6vw;}
+}
 
+/* ─── GALLERY ─────────────────────────────── */
+.gallery{background:var(--bg);padding:120px 0;}
+.gallery .sh{padding:0 5vw;margin-bottom:52px;}
+.gtabs{
+  display:flex;padding:0 5vw;margin-bottom:36px;
+  border-bottom:1px solid var(--border);overflow-x:auto;
+}
+.gtabs::-webkit-scrollbar{display:none;}
+.gtab{
+  padding:12px 22px;font-size:.82rem;font-weight:600;letter-spacing:.04em;
+  color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;
+  background:none;border-top:none;border-left:none;border-right:none;
+  cursor:none;transition:color .2s,border-color .2s;white-space:nowrap;
+}
+.gtab:hover{color:var(--white);}
+.gtab.active{color:var(--white);border-bottom-color:var(--gold);}
+.ggrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:220px;
+  gap:12px;padding:0 5vw;
+}
+.gi{
+  position:relative;border-radius:16px;overflow:hidden;
+  background:var(--bg-soft);cursor:none;
+  transition:transform .4s ease,z-index 0s;
+}
+.gi:hover{transform:scale(1.025);z-index:2;}
+.gi img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  position:relative;z-index:1;transition:transform .6s ease;
+}
+.gi:hover img{transform:scale(1.09);}
+.gi-ov{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(180deg,transparent 38%,rgba(11,11,15,.88) 100%);
+  opacity:0;transition:opacity .35s ease;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:18px 20px;
+}
+.gi:hover .gi-ov{opacity:1;}
+.gi-ov .gi-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:5px;
+}
+.gi-ov .gi-cap{
+  color:var(--white);font-size:.85rem;font-weight:600;
+  transform:translateY(8px);transition:transform .35s ease;
+}
+.gi:hover .gi-cap{transform:translateY(0);}
+.g-tall{grid-row:span 2;}
+.g-wide{grid-column:span 2;}
+.gi.hidden{display:none;}
+@media(max-width:860px){
+  .ggrid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;}
+  .g-wide{grid-column:span 2;}.g-tall{grid-row:span 1;}
+}
+@media(max-width:520px){
+  .ggrid{grid-template-columns:1fr;grid-auto-rows:55vw;}
+  .g-wide,.g-tall{grid-column:span 1;}
+}
 
-  .builtfor{background:var(--navy);color:#fff;}
-  .builtfor .section__head p{color:rgba(255,255,255,0.62);}
-  .builtfor .section__head .eyebrow{color:var(--edge);}
-  .builtfor .section__head h2{color:#fff;}
-  .built-grid{
-    display:grid;grid-template-columns:repeat(auto-fit, minmax(220px,1fr));gap:1px;
-    border:1px solid var(--line);border-radius:18px;overflow:hidden;
-  }
-  .built-card{
-    padding:38px 28px;background:rgba(255,255,255,0.02);
-    border-right:1px solid var(--line);
-    transition:background .25s ease;
-  }
-  .built-card:last-child{border-right:none;}
-  .built-card:hover{background:rgba(159,227,206,0.06);}
-  .built-card svg{width:34px;height:34px;margin-bottom:18px;stroke:var(--edge);}
-  .built-card h3{font-size:1.08rem;margin-bottom:8px;font-weight:600;}
-  .built-card p{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.6;}
-  @media(max-width:700px){
-    .built-card{border-right:none;border-bottom:1px solid var(--line);}
-    .built-card:last-child{border-bottom:none;}
-  }
+/* ─── STATS ───────────────────────────────── */
+.stats{
+  background:var(--bg-soft);padding:80px 5vw;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.stats-g{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:20px;overflow:hidden;
+}
+.st{
+  padding:40px 32px;background:var(--bg-soft);
+  text-align:center;transition:background .3s;
+}
+.st:hover{background:rgba(255,255,255,.025);}
+.st .sn{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.4rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px;
+}
+.st .sl{font-size:.83rem;color:var(--muted);letter-spacing:.04em;}
+@media(max-width:700px){.stats-g{grid-template-columns:1fr 1fr;}.st{padding:30px 18px;}}
+@media(max-width:440px){.stats-g{grid-template-columns:1fr;}}
 
-  /* ============ PROCESS ============ */
-  .process{background:var(--ice);}
-  .process-row{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-    border-top:1px solid var(--frost);
-  }
-  .process-step{
-    padding:36px 26px 0;border-left:1px solid var(--frost);position:relative;
-  }
-  .process-step:first-child{border-left:none;}
-  .process-step::before{
-    content:'';position:absolute;top:-1px;left:0;width:46px;height:3px;background:var(--blue);
-  }
-  .process-step .num{
-    font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--blue);
-    letter-spacing:0.15em;margin-bottom:14px;display:block;
-  }
-  .process-step h3{font-size:1.1rem;margin-bottom:10px;}
-  .process-step p{font-size:0.92rem;color:#5C6B7A;line-height:1.65;}
-  @media(max-width:840px){
-    .process-row{grid-template-columns:1fr;}
-    .process-step{border-left:none;border-top:1px solid var(--frost);padding-top:30px;}
-    .process-step:first-child{border-top:none;}
-    .process-step::before{display:none;}
-  }
+/* ─── WHO WE SERVE ────────────────────────── */
+.serve{background:var(--bg);padding:120px 5vw;}
+.serve .sh{margin-bottom:64px;}
+.serve-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.sv{
+  position:relative;border-radius:24px;overflow:hidden;
+  min-height:440px;cursor:none;
+}
+.sv-bg{position:absolute;inset:0;overflow:hidden;}
+.sv-bg img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .7s cubic-bezier(.23,1,.32,1);
+}
+.sv:hover .sv-bg img{transform:scale(1.07);}
+.sv-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(11,11,15,.18) 0%,rgba(11,11,15,.86) 100%);
+  transition:background .4s;
+}
+.sv:hover .sv-ov{background:linear-gradient(180deg,rgba(11,11,15,.28) 0%,rgba(11,11,15,.93) 100%);}
+.sv-con{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:34px;
+}
+.sv-ico{
+  width:48px;height:48px;border-radius:12px;
+  border:1px solid rgba(201,169,110,.35);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;background:rgba(201,169,110,.1);
+  backdrop-filter:blur(10px);
+  transform:translateY(8px);opacity:.65;
+  transition:transform .4s,opacity .4s;
+}
+.sv:hover .sv-ico{transform:translateY(0);opacity:1;}
+.sv-ico svg{width:22px;height:22px;stroke:var(--gold);stroke-width:1.6;fill:none;}
+.sv-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;
+}
+.sv-title{font-size:1.55rem;font-weight:700;margin-bottom:10px;}
+.sv-desc{
+  font-size:.87rem;color:rgba(250,250,248,.68);line-height:1.65;
+  max-height:0;overflow:hidden;transition:max-height .4s,opacity .4s;opacity:0;
+}
+.sv:hover .sv-desc{max-height:120px;opacity:1;}
+@media(max-width:860px){
+  .serve-grid{grid-template-columns:1fr;gap:16px;}
+  .sv{min-height:280px;}
+  .sv-desc{max-height:120px;opacity:1;}
+}
 
-  /* ============ WHY US ============ */
-  .why{background:#fff;}
-  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px;}
-  .why-item{display:flex;gap:18px;align-items:flex-start;}
-  .why-item .icon{
-    flex-shrink:0;width:46px;height:46px;border-radius:12px;
-    background:linear-gradient(135deg, var(--blue), var(--navy-soft));
-    display:flex;align-items:center;justify-content:center;
-  }
-  .why-item .icon svg{width:22px;height:22px;stroke:var(--edge);}
-  .why-item h3{font-size:1.08rem;margin-bottom:6px;}
-  .why-item p{font-size:0.92rem;color:#5C6B7A;line-height:1.6;}
+/* ─── PROCESS ─────────────────────────────── */
+.process{background:var(--bg-soft);padding:120px 5vw;}
+.process .sh{margin-bottom:72px;}
+.proc-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+.ps{padding:0 24px 0 0;position:relative;transition:transform .3s;}
+.ps:hover{transform:translateY(-5px);}
+.ps-num{
+  width:56px;height:56px;border-radius:50%;
+  border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;
+  color:var(--gold);background:var(--bg-soft);
+  margin-bottom:30px;
+  transition:background .3s,box-shadow .3s,color .3s;
+}
+.ps:hover .ps-num{
+  background:var(--gold);color:#0B0B0F;
+  box-shadow:0 8px 28px -8px rgba(201,169,110,.52);
+}
+.ps h3{font-size:1.12rem;font-weight:700;margin-bottom:12px;}
+.ps p{font-size:.87rem;color:var(--muted);line-height:1.7;}
+@media(max-width:860px){
+  .proc-grid{grid-template-columns:1fr 1fr;gap:40px;}
+  .ps{padding:0;}
+}
+@media(max-width:500px){.proc-grid{grid-template-columns:1fr;}}
 
-  /* ============ CONTACT / FOOTER ============ */
-  .contact{
-    background:linear-gradient(160deg, var(--navy) 0%, #0d2238 100%);
-    color:#fff;position:relative;overflow:hidden;
-  }
-  .contact::before{
-    content:'';position:absolute;width:520px;height:520px;border-radius:50%;
-    background:radial-gradient(circle, rgba(159,227,206,0.10), transparent 70%);
-    top:-180px;right:-160px;
-  }
-  .contact__inner{
-    position:relative;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;
-    max-width:var(--max);margin:0 auto;align-items:center;
-  }
-  .contact .eyebrow{color:var(--edge);margin-bottom:16px;display:block;}
-  .contact h2{font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.18;margin-bottom:20px;font-weight:700;}
-  .contact p.lede{color:rgba(255,255,255,0.68);font-size:1.02rem;line-height:1.7;margin-bottom:32px;max-width:460px;}
-  .contact__ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px;}
-  .contact-card{
-    border:1px solid var(--line);border-radius:18px;padding:32px;
-    background:rgba(255,255,255,0.03);
-  }
-  .contact-card .row{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);}
-  .contact-card .row:last-child{border-bottom:none;}
-  .contact-card .label{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:var(--edge);text-transform:uppercase;}
-  .contact-card .value{font-weight:600;text-align:right;}
-  .footer-bottom{
-    margin-top:90px;padding-top:28px;border-top:1px solid var(--line);
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
-    font-size:0.85rem;color:rgba(255,255,255,0.5);
-  }
-  .footer-bottom .brand{
-    font-family:'Space Grotesk',sans-serif;color:#fff;font-weight:700;letter-spacing:0.06em;
-  }
-  .footer-credit{
-    margin-top:18px;text-align:center;
-    font-size:0.78rem;color:rgba(255,255,255,0.38);
-    letter-spacing:0.04em;
-  }
-  .footer-credit a{
-    color:rgba(255,255,255,0.6);font-weight:600;
-    border-bottom:1px solid rgba(159,227,206,0.35);
-    transition:color .2s ease, border-color .2s ease;
-  }
-  .footer-credit a:hover{color:var(--edge);border-color:var(--edge);}
-  @media(max-width:840px){
-    .contact__inner{grid-template-columns:1fr;}
-  }
+/* ─── WHY US ──────────────────────────────── */
+.why{background:var(--bg);padding:120px 5vw;}
+.why .sh{margin-bottom:60px;}
+.why-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
+}
+.wc{
+  padding:34px 36px;border-radius:20px;
+  border:1px solid var(--border);background:var(--bg-card);
+  display:flex;gap:22px;align-items:flex-start;
+  transition:border-color .3s,background .3s,transform .3s;
+}
+.wc:hover{
+  border-color:rgba(201,169,110,.38);
+  background:rgba(201,169,110,.04);
+  transform:translateY(-4px);
+}
+.wc-ico{
+  width:52px;height:52px;border-radius:14px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(201,169,110,.16),rgba(201,169,110,.04));
+  border:1px solid rgba(201,169,110,.22);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s;
+}
+.wc:hover .wc-ico{background:rgba(201,169,110,.24);}
+.wc-ico svg{width:24px;height:24px;stroke:var(--gold);stroke-width:1.6;fill:none;}
+.wc h3{font-size:1.07rem;font-weight:700;margin-bottom:10px;}
+.wc p{font-size:.87rem;color:var(--muted);line-height:1.7;}
+@media(max-width:700px){.why-grid{grid-template-columns:1fr;}}
 
-  /* reveal on scroll */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
-  .reveal.is-visible{opacity:1;transform:translateY(0);}
+/* ─── CONTACT ─────────────────────────────── */
+.contact{background:var(--bg-soft);padding:120px 5vw;position:relative;overflow:hidden;}
+.contact::before{
+  content:'';position:absolute;top:-200px;right:-200px;
+  width:580px;height:580px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,169,110,.07),transparent 70%);
+  pointer-events:none;
+}
+.contact::after{
+  content:'';position:absolute;bottom:-180px;left:-180px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(28,207,184,.05),transparent 70%);
+  pointer-events:none;
+}
+.contact-in{
+  position:relative;z-index:1;
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:center;
+}
+.contact h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.3rem,4vw,3.5rem);font-weight:300;line-height:1.12;margin-bottom:18px;
+}
+.contact h2 em{font-style:italic;color:var(--gold);}
+.contact .lede{font-size:1rem;color:var(--muted);line-height:1.76;margin-bottom:40px;max-width:460px;}
+.contact-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+.cc{
+  border:1px solid var(--border);border-radius:22px;
+  padding:36px;background:rgba(255,255,255,.025);backdrop-filter:blur(10px);
+}
+.cc-row{
+  display:flex;flex-direction:column;gap:4px;
+  padding:16px 0;border-bottom:1px solid var(--border);
+}
+.cc-row:last-child{border-bottom:none;}
+.cc-row .l{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  letter-spacing:.2em;color:var(--gold);text-transform:uppercase;
+}
+.cc-row .v{font-size:.91rem;font-weight:600;color:var(--white);}
+@media(max-width:860px){
+  .contact-in{grid-template-columns:1fr;gap:48px;}
+  .contact .lede{max-width:100%;}
+}
+
+/* ─── FOOTER ──────────────────────────────── */
+.footer{
+  background:var(--bg);padding:30px 5vw;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:14px;
+}
+.ft-brand{font-weight:700;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;}
+.ft-copy{font-size:.78rem;color:var(--muted);}
+.ft-cr{font-size:.76rem;color:rgba(250,250,248,.3);}
+.ft-cr a{color:var(--gold);border-bottom:1px solid rgba(201,169,110,.3);transition:border-color .2s;}
+.ft-cr a:hover{border-color:var(--gold);}
+
+/* ─── REVEAL ──────────────────────────────── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s cubic-bezier(.23,1,.32,1),transform .85s cubic-bezier(.23,1,.32,1);}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+}
 </style>
 </head>
-<body class="intro-active">
+<body class="loading">
 
-<div class="intro" id="intro" aria-hidden="true">
-  <div class="intro__panel intro__panel--left"></div>
-  <div class="intro__panel intro__panel--right"></div>
-  <div class="intro__center">
-    <img class="intro__logo" src="IMG-20260612-WA0023.jpg" alt="" onerror="this.removeAttribute('src')">
-    <div class="intro__word">MILLENNIUM GLASSES</div>
-    <div class="intro__tag eyebrow">CLEAR VISION · QUALITY SOLUTION</div>
+<!-- CURSOR -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader__p loader__p--l"></div>
+  <div class="loader__p loader__p--r"></div>
+  <div class="loader__c">
+    <img class="loader__logo" src="IMG-20260612-WA0023.jpg" alt="" onerror="this.removeAttribute('src')">
+    <div class="loader__name">Millennium Glasses</div>
+    <div class="loader__tag">Clear Vision · Quality Solution</div>
+    <div class="loader__prog"><div class="loader__bar" id="lBar"></div></div>
   </div>
 </div>
 
-
+<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#top" class="nav__brand">
-    <span class="nav__mark">
-      <img src="IMG-20260612-WA0023.jpg" alt="Millennium Glasses Ltd logo" onerror="this.removeAttribute('src')">
+    <span class="nav__lw">
+      <img src="IMG-20260612-WA0023.jpg" alt="Millennium Glasses" onerror="this.style.display='none'">
     </span>
-    MILLENNIUM GLASSES
+    Millennium Glasses
   </a>
   <div class="nav__links" id="navLinks">
-    <a href="#services">Glass Range</a>
+    <a href="#services">Services</a>
     <a href="#gallery">Gallery</a>
-    <a href="#built-for">Built For</a>
     <a href="#process">Process</a>
     <a href="#why">Why Us</a>
-    <a href="#contact" class="nav__cta">WhatsApp Us</a>
+    <a href="#contact" class="nav__cta">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.852 2C6.477 2 2.089 6.388 2.089 11.763c0 1.787.468 3.505 1.356 5.012L2 22l5.353-1.406A9.749 9.749 0 0 0 11.852 21.526C17.228 21.526 21.614 17.138 21.614 11.763S17.228 2 11.852 2z"/></svg>
+      WhatsApp Us
+    </a>
   </div>
-  <button class="nav__toggle" id="navToggle" aria-label="Menu">
+  <button class="nav__burg" id="navBurg" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
+<!-- HERO -->
 <header class="hero" id="top">
-  <div class="hero__inner">
-    <div>
-      <div class="hero__eyebrow eyebrow">EMBAKASI, NAIROBI · EST. GLASS &amp; MIRROR SPECIALISTS</div>
-      <h1>Clear vision.<br>Built to <em>last</em>.</h1>
-      <p class="lede">We supply, cut and fit glass for homes, offices and commercial buildings — partitions, mirrors, shower enclosures, windows and doors. Measured on-site, made to fit, finished properly.</p>
-      <div class="hero__ctas">
-        <a class="btn btn--primary" href="https://wa.me/254711908645" target="_blank" rel="noopener">Get a free quote on WhatsApp</a>
-        <a class="btn btn--ghost" href="#services">See our glass range</a>
-      </div>
+  <div class="hero__txt">
+    <div class="hero__ey">Embakasi, Nairobi &nbsp;·&nbsp; Glass &amp; Mirror Specialists</div>
+    <h1>
+      <span class="ln"><span>Glass that</span></span>
+      <span class="ln"><span><em>defines</em> your</span></span>
+      <span class="ln"><span>space.</span></span>
+    </h1>
+    <p class="hero__desc">We supply, cut and fit premium glass for homes, offices and commercial buildings — partitions, mirrors, shower enclosures, windows and doors. Measured on-site, built to fit.</p>
+    <div class="hero__ctas">
+      <a class="btn btn--gold" href="https://wa.me/254711908645" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.852 2C6.477 2 2.089 6.388 2.089 11.763c0 1.787.468 3.505 1.356 5.012L2 22l5.353-1.406A9.749 9.749 0 0 0 11.852 21.526C17.228 21.526 21.614 17.138 21.614 11.763S17.228 2 11.852 2z"/></svg>
+        Get a Free Quote
+      </a>
+      <a class="btn btn--outline" href="#services">Our Services</a>
     </div>
-    <div class="hero__visual" aria-hidden="true">
-      <div class="pane pane--a"></div>
-      <div class="pane pane--b"></div>
-      <div class="pane pane--c"></div>
+    <div class="hero__scroll"><div class="scroll-ln"></div><span>Scroll to explore</span></div>
+  </div>
+  <div class="hero__img">
+    <img src="IMG-20260614-WA0104.jpg" alt="Premium glass interior — luxury living space" onerror="this.src='IMG-20260612-WA0046.jpg'">
+    <div class="hero__img-ov"></div>
+    <div class="hero__badge">
+      <div class="bnum">500<span style="font-size:1.6rem">+</span></div>
+      <div class="blbl">Projects Completed</div>
     </div>
   </div>
 </header>
 
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item">Glass Partitions<span class="mq-dot"></span></span>
+    <span class="mq-item">Custom Mirrors<span class="mq-dot"></span></span>
+    <span class="mq-item">Shower Enclosures<span class="mq-dot"></span></span>
+    <span class="mq-item">Aluminium Windows<span class="mq-dot"></span></span>
+    <span class="mq-item">Glass Doors<span class="mq-dot"></span></span>
+    <span class="mq-item">Balcony Railings<span class="mq-dot"></span></span>
+    <span class="mq-item">Glass Repairs<span class="mq-dot"></span></span>
+    <span class="mq-item">Commercial Glazing<span class="mq-dot"></span></span>
+    <span class="mq-item">Glass Partitions<span class="mq-dot"></span></span>
+    <span class="mq-item">Custom Mirrors<span class="mq-dot"></span></span>
+    <span class="mq-item">Shower Enclosures<span class="mq-dot"></span></span>
+    <span class="mq-item">Aluminium Windows<span class="mq-dot"></span></span>
+    <span class="mq-item">Glass Doors<span class="mq-dot"></span></span>
+    <span class="mq-item">Balcony Railings<span class="mq-dot"></span></span>
+    <span class="mq-item">Glass Repairs<span class="mq-dot"></span></span>
+    <span class="mq-item">Commercial Glazing<span class="mq-dot"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
 <section class="services" id="services">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">OUR GLASS RANGE</span>
-      <h2>Every panel, cut to your space.</h2>
-      <p>From a single mirror to a full office fit-out — every job starts with the right glass for the job. Here's what we work with most.</p>
+  <div class="sh reveal">
+    <div class="sh-ey">Our Glass Range</div>
+    <h2>Every panel, <em>cut to your space.</em></h2>
+    <p>From a single mirror to a full commercial fit-out — every job begins with the right glass for the application.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <div class="svc-img">
+        <img src="IMG-20260614-WA0063.jpg" alt="Glass office partition" onerror="this.src='IMG-20260612-WA0031.jpg'">
+        <div class="svc-img-ov"></div>
+        <span class="svc-num">01</span>
+      </div>
+      <div class="svc-body">
+        <h3>Glass Partitions</h3>
+        <p>Divide a room without closing it off. Frameless or framed, clear or frosted — cut to size for offices, salons and homes.</p>
+        <a href="https://wa.me/254711908645" class="svc-link" target="_blank" rel="noopener">Enquire <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
     </div>
-    <div class="swatch-grid">
-      <div class="swatch reveal">
-        <div class="swatch__sample sample--clear">
-          <img src="IMG-20260612-WA0031.jpg" alt="Glass office partition" onerror="this.removeAttribute('src')">
-        </div>
-        <div class="swatch__body">
-          <span class="swatch__num">01 — PARTITIONS</span>
-          <h3>Glass Partitions</h3>
-          <p>Divide a room without closing it off. Frameless or framed, clear or frosted, cut to size for offices, salons and homes.</p>
-        </div>
+    <div class="svc-card reveal d1">
+      <div class="svc-img">
+        <img src="IMG-20260614-WA0095.jpg" alt="Shower enclosure" onerror="this.src='IMG-20260612-WA0040.jpg'">
+        <div class="svc-img-ov"></div>
+        <span class="svc-num">02</span>
       </div>
-      <div class="swatch reveal">
-        <div class="swatch__sample sample--frosted">
-          <img src="IMG-20260612-WA0040.jpg" alt="Frosted glass enclosure" onerror="this.removeAttribute('src')">
-        </div>
-        <div class="swatch__body">
-          <span class="swatch__num">02 — SHOWER ENCLOSURES</span>
-          <h3>Shower Enclosures</h3>
-          <p>Watertight glass enclosures with a clean, modern finish — properly sealed, easy to wipe down, built to handle daily use.</p>
-        </div>
+      <div class="svc-body">
+        <h3>Shower Enclosures</h3>
+        <p>Watertight glass enclosures with a clean modern finish — properly sealed, easy to maintain, built for daily use.</p>
+        <a href="https://wa.me/254711908645" class="svc-link" target="_blank" rel="noopener">Enquire <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="swatch reveal">
-        <div class="swatch__sample sample--framed">
-          <img src="IMG-20260612-WA0036.jpg" alt="Glass door and window frame" onerror="this.removeAttribute('src')">
-        </div>
-        <div class="swatch__body">
-          <span class="swatch__num">03 — WINDOWS &amp; DOORS</span>
-          <h3>Windows &amp; Doors</h3>
-          <p>Aluminium-framed glass windows and doors, fitted and sealed correctly the first time — for homes and commercial premises.</p>
-        </div>
+    </div>
+    <div class="svc-card reveal d2">
+      <div class="svc-img">
+        <img src="IMG-20260614-WA0062.jpg" alt="Glass door and aluminium frame" onerror="this.src='IMG-20260612-WA0036.jpg'">
+        <div class="svc-img-ov"></div>
+        <span class="svc-num">03</span>
       </div>
-      <div class="swatch reveal">
-        <div class="swatch__sample sample--mirror">
-          <img src="IMG-20260612-WA0024.jpg" alt="Mirror installation" onerror="this.removeAttribute('src')">
-        </div>
-        <div class="swatch__body">
-          <span class="swatch__num">04 — MIRRORS</span>
-          <h3>Mirrors</h3>
-          <p>Wall mirrors, cabinet mirrors and full-length pieces, cut to your exact wall or frame — supplied and fitted.</p>
-        </div>
+      <div class="svc-body">
+        <h3>Windows &amp; Doors</h3>
+        <p>Aluminium-framed glass windows and doors, fitted and sealed correctly the first time for homes and commercial premises.</p>
+        <a href="https://wa.me/254711908645" class="svc-link" target="_blank" rel="noopener">Enquire <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="swatch reveal">
-        <div class="swatch__sample sample--repair">
-          <img src="IMG-20260612-WA0032.jpg" alt="Glass installation and repair on site" onerror="this.removeAttribute('src')">
-        </div>
-        <div class="swatch__body">
-          <span class="swatch__num">05 — REPAIRS</span>
-          <h3>Glass Repairs</h3>
-          <p>Cracked pane, broken shower door, loose mirror? We replace, reseal and restore — fast turnaround on most repairs.</p>
-        </div>
+    </div>
+    <div class="svc-card reveal d3">
+      <div class="svc-img">
+        <img src="IMG-20260614-WA0052.jpg" alt="Custom wall mirror" onerror="this.src='IMG-20260612-WA0024.jpg'">
+        <div class="svc-img-ov"></div>
+        <span class="svc-num">04</span>
+      </div>
+      <div class="svc-body">
+        <h3>Custom Mirrors</h3>
+        <p>Wall mirrors, cabinet mirrors and full-length pieces — cut to your exact dimensions, supplied and professionally fitted.</p>
+        <a href="https://wa.me/254711908645" class="svc-link" target="_blank" rel="noopener">Enquire <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <div class="svc-card reveal d4">
+      <div class="svc-img">
+        <img src="IMG-20260614-WA0085.jpg" alt="Commercial glass installation" onerror="this.src='IMG-20260612-WA0032.jpg'">
+        <div class="svc-img-ov"></div>
+        <span class="svc-num">05</span>
+      </div>
+      <div class="svc-body">
+        <h3>Glass Repairs</h3>
+        <p>Cracked pane, broken shower door, loose mirror? We replace, reseal and restore — fast turnaround on most repairs.</p>
+        <a href="https://wa.me/254711908645" class="svc-link" target="_blank" rel="noopener">Enquire <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SHOWCASE / FEATURED -->
+<section class="showcase">
+  <div class="sc-img">
+    <img src="IMG-20260614-WA0101.jpg" alt="Luxury bedroom with statement arch mirror" onerror="this.src='IMG-20260612-WA0024.jpg'">
+    <div class="sc-img-ov"></div>
+  </div>
+  <div class="sc-txt reveal">
+    <div class="sh-ey">Signature Work</div>
+    <h2>Spaces where <em>glass</em><br>steals the room.</h2>
+    <p class="sc-desc">From arched statement mirrors in master bedrooms to floor-to-ceiling partitions in executive offices — we handle every dimension with precision and care.</p>
+    <div class="sc-stats">
+      <div class="sc-stat">
+        <div class="sn count-up" data-target="500" data-suffix="+">0+</div>
+        <div class="sl">Projects completed</div>
+      </div>
+      <div class="sc-stat">
+        <div class="sn count-up" data-target="8" data-suffix="+">0+</div>
+        <div class="sl">Years in Nairobi</div>
+      </div>
+      <div class="sc-stat">
+        <div class="sn">24hr</div>
+        <div class="sl">Response time</div>
+      </div>
+      <div class="sc-stat">
+        <div class="sn">100%</div>
+        <div class="sl">Satisfaction guarantee</div>
+      </div>
+    </div>
+    <a class="btn btn--gold" href="https://wa.me/254711908645" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.852 2C6.477 2 2.089 6.388 2.089 11.763c0 1.787.468 3.505 1.356 5.012L2 22l5.353-1.406A9.749 9.749 0 0 0 11.852 21.526C17.228 21.526 21.614 17.138 21.614 11.763S17.228 2 11.852 2z"/></svg>
+      Start Your Project
+    </a>
+  </div>
+</section>
+
+<!-- GALLERY -->
 <section class="gallery" id="gallery">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">RECENT WORK</span>
-      <h2>Glass we've supplied and fitted.</h2>
-      <p>A look at recent partitions, doors, mirrors and glazing jobs around Nairobi. Photos load from the repo root — upload the WhatsApp export files with their original names and they'll appear here automatically.</p>
+  <div class="sh reveal">
+    <div class="sh-ey">Recent Work</div>
+    <h2>Glass we've <em>supplied &amp; fitted.</em></h2>
+    <p>A selection of mirrors, partitions, shower enclosures and glazing projects across Nairobi — upload the new photo files and they appear here automatically.</p>
+  </div>
+
+  <div class="gtabs" role="tablist">
+    <button class="gtab active" data-filter="all">All Work</button>
+    <button class="gtab" data-filter="mirror">Mirrors</button>
+    <button class="gtab" data-filter="partition">Partitions</button>
+    <button class="gtab" data-filter="shower">Showers</button>
+    <button class="gtab" data-filter="window">Windows &amp; Doors</button>
+    <button class="gtab" data-filter="commercial">Commercial</button>
+  </div>
+
+  <div class="ggrid" id="ggrid">
+    <div class="gi g-wide g-tall" data-cat="mirror">
+      <img src="IMG-20260614-WA0102.jpg" alt="Arched mirror luxury living room" onerror="this.src='IMG-20260612-WA0024.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Mirror</div><div class="gi-cap">Arched statement mirror — luxury living room</div></div>
     </div>
-    <div class="gallery-grid">
-
-      <div class="gallery-item g-wide g-tall">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0046.jpg</span></div>
-        <img src="IMG-20260612-WA0046.jpg" alt="Commercial glazing exterior" onerror="this.removeAttribute('src')">
-        <div class="cap">Commercial glazing — exterior</div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0049.jpg</span></div>
-        <img src="IMG-20260612-WA0049.jpg" alt="Office glass partition installation" onerror="this.removeAttribute('src')">
-        <div class="cap">Office partitions — frameless glass</div>
-      </div>
-
-      <div class="gallery-item g-tall">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0024.jpg</span></div>
-        <img src="IMG-20260612-WA0024.jpg" alt="Wall mirror installation" onerror="this.removeAttribute('src')">
-        <div class="cap">Wall mirror installation</div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0037.jpg</span></div>
-        <img src="IMG-20260612-WA0037.jpg" alt="Balcony glass railing" onerror="this.removeAttribute('src')">
-        <div class="cap">Balcony glass railing</div>
-      </div>
-
-      <div class="gallery-item g-wide">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0038.jpg</span></div>
-        <img src="IMG-20260612-WA0038.jpg" alt="Site installation in progress" onerror="this.removeAttribute('src')">
-        <div class="cap">On-site installation</div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0028.jpg</span></div>
-        <img src="IMG-20260612-WA0028.jpg" alt="Aluminium window frame" onerror="this.removeAttribute('src')">
-        <div class="cap">Aluminium windows</div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0035.jpg</span></div>
-        <img src="IMG-20260612-WA0035.jpg" alt="Frosted glass partition" onerror="this.removeAttribute('src')">
-        <div class="cap">Frosted partition</div>
-      </div>
-
-      <div class="gallery-item g-tall">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0042.jpg</span></div>
-        <img src="IMG-20260612-WA0042.jpg" alt="Glass shopfront" onerror="this.removeAttribute('src')">
-        <div class="cap">Glass shopfront</div>
-      </div>
-
-      <div class="gallery-item">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0025.jpg</span></div>
-        <img src="IMG-20260612-WA0025.jpg" alt="Mirror splashback" onerror="this.removeAttribute('src')">
-        <div class="cap">Mirror splashback</div>
-      </div>
-
-      <div class="gallery-item g-wide">
-        <div class="ph"><span class="eyebrow">ADD PHOTO</span><span class="file">IMG-20260612-WA0034.jpg</span></div>
-        <img src="IMG-20260612-WA0034.jpg" alt="Office glass partition" onerror="this.removeAttribute('src')">
-        <div class="cap">Office partition — frosted detail</div>
-      </div>
-
+    <div class="gi" data-cat="partition">
+      <img src="IMG-20260614-WA0063.jpg" alt="Glass office partition" onerror="this.src='IMG-20260612-WA0031.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Partition</div><div class="gi-cap">Frameless office partition</div></div>
+    </div>
+    <div class="gi g-tall" data-cat="mirror">
+      <img src="IMG-20260614-WA0097.jpg" alt="Round mirror bedroom" onerror="this.src='IMG-20260612-WA0025.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Mirror</div><div class="gi-cap">Round wall mirror — master bedroom</div></div>
+    </div>
+    <div class="gi" data-cat="shower">
+      <img src="IMG-20260614-WA0095.jpg" alt="Shower enclosure" onerror="this.src='IMG-20260612-WA0040.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Shower</div><div class="gi-cap">Frameless shower enclosure</div></div>
+    </div>
+    <div class="gi g-wide" data-cat="commercial">
+      <img src="IMG-20260614-WA0085.jpg" alt="Commercial glass building" onerror="this.src='IMG-20260612-WA0046.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Commercial</div><div class="gi-cap">Commercial glazing — building facade</div></div>
+    </div>
+    <div class="gi" data-cat="window">
+      <img src="IMG-20260614-WA0062.jpg" alt="Glass entrance door" onerror="this.src='IMG-20260612-WA0036.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Door</div><div class="gi-cap">Frameless glass entrance door</div></div>
+    </div>
+    <div class="gi" data-cat="mirror">
+      <img src="IMG-20260614-WA0080.jpg" alt="Circular mirror accent wall" onerror="this.src='IMG-20260612-WA0025.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Mirror</div><div class="gi-cap">Circular mirror — accent wall</div></div>
+    </div>
+    <div class="gi g-tall" data-cat="commercial">
+      <img src="IMG-20260614-WA0073.jpg" alt="Open plan office glass" onerror="this.src='IMG-20260612-WA0034.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Commercial</div><div class="gi-cap">Open-plan office with glass partitions</div></div>
+    </div>
+    <div class="gi" data-cat="shower">
+      <img src="IMG-20260614-WA0089.jpg" alt="Bathroom vanity mirror" onerror="this.src='IMG-20260612-WA0040.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Bathroom</div><div class="gi-cap">Bathroom vanity with custom mirror</div></div>
+    </div>
+    <div class="gi g-wide" data-cat="window">
+      <img src="IMG-20260614-WA0071.jpg" alt="Arched window interior" onerror="this.src='IMG-20260612-WA0028.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Windows</div><div class="gi-cap">Arched steel-frame window installation</div></div>
+    </div>
+    <div class="gi" data-cat="mirror">
+      <img src="IMG-20260614-WA0092.jpg" alt="Decorative circular mirror" onerror="this.src='IMG-20260612-WA0024.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Mirror</div><div class="gi-cap">Decorative circular mirror</div></div>
+    </div>
+    <div class="gi" data-cat="partition">
+      <img src="IMG-20260614-WA0046.jpg" alt="Interior glass partition" onerror="this.src='IMG-20260612-WA0035.jpg'">
+      <div class="gi-ov"><div class="gi-tag">Partition</div><div class="gi-cap">Interior glass partition with arch detail</div></div>
     </div>
   </div>
 </section>
 
-<section class="builtfor" id="built-for">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">WHO WE WORK WITH</span>
-      <h2>Homes, offices and commercial buildings.</h2>
-      <p>Whatever the property, the approach is the same: visit, measure, cut, fit, finish.</p>
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-g">
+    <div class="st reveal">
+      <div class="sn count-up" data-target="500" data-suffix="+">0</div>
+      <div class="sl">Projects completed</div>
     </div>
-    <div class="built-grid">
-      <div class="built-card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
-        <h3>Homes</h3>
-        <p>Shower enclosures, wardrobe mirrors, balcony glass and window replacements for apartments and houses.</p>
+    <div class="st reveal d1">
+      <div class="sn count-up" data-target="8" data-suffix="+">0</div>
+      <div class="sl">Years in Nairobi</div>
+    </div>
+    <div class="st reveal d2">
+      <div class="sn">24hr</div>
+      <div class="sl">Average response time</div>
+    </div>
+    <div class="st reveal d3">
+      <div class="sn">100%</div>
+      <div class="sl">Satisfaction guaranteed</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+<section class="serve" id="built-for">
+  <div class="sh reveal">
+    <div class="sh-ey">Who We Work With</div>
+    <h2>Homes, offices &amp; <em>commercial buildings.</em></h2>
+    <p>Whatever the property, the approach is the same: visit, measure, cut, fit, finish.</p>
+  </div>
+  <div class="serve-grid">
+    <div class="sv reveal">
+      <div class="sv-bg"><img src="IMG-20260614-WA0048.jpg" alt="Luxury home interior" onerror="this.src='IMG-20260612-WA0024.jpg'"></div>
+      <div class="sv-ov"></div>
+      <div class="sv-con">
+        <div class="sv-ico"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div class="sv-tag">Residential</div>
+        <div class="sv-title">Homes</div>
+        <div class="sv-desc">Shower enclosures, wardrobe mirrors, balcony glass and window replacements for apartments and houses across Nairobi.</div>
       </div>
-      <div class="built-card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1"/></svg>
-        <h3>Offices</h3>
-        <p>Frameless partitions, meeting room glass, reception screens and signage glass for office fit-outs.</p>
+    </div>
+    <div class="sv reveal d1">
+      <div class="sv-bg"><img src="IMG-20260614-WA0073.jpg" alt="Modern office with glass" onerror="this.src='IMG-20260612-WA0034.jpg'"></div>
+      <div class="sv-ov"></div>
+      <div class="sv-con">
+        <div class="sv-ico"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1"/></svg></div>
+        <div class="sv-tag">Corporate</div>
+        <div class="sv-title">Offices</div>
+        <div class="sv-desc">Frameless partitions, meeting room glass, reception screens and signage glass for professional office fit-outs.</div>
       </div>
-      <div class="built-card reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
-        <h3>Commercial</h3>
-        <p>Shopfronts, display cabinets, large-format windows and partitions for shops, salons and restaurants.</p>
+    </div>
+    <div class="sv reveal d2">
+      <div class="sv-bg"><img src="IMG-20260614-WA0085.jpg" alt="Commercial glazed building" onerror="this.src='IMG-20260612-WA0042.jpg'"></div>
+      <div class="sv-ov"></div>
+      <div class="sv-con">
+        <div class="sv-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div class="sv-tag">Retail &amp; Hospitality</div>
+        <div class="sv-title">Commercial</div>
+        <div class="sv-desc">Shopfronts, display cabinets, large-format windows and partitions for shops, salons and restaurants.</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PROCESS -->
 <section class="process" id="process">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">HOW A JOB RUNS</span>
-      <h2>From site visit to finished glass.</h2>
-      <p>Four steps, every time — so there are no surprises about fit, finish or timing.</p>
+  <div class="sh reveal">
+    <div class="sh-ey">How a Job Runs</div>
+    <h2>From site visit to <em>finished glass.</em></h2>
+    <p>Four steps, every time — so there are no surprises about fit, finish or timing.</p>
+  </div>
+  <div class="proc-grid">
+    <div class="ps reveal">
+      <div class="ps-num">1</div>
+      <h3>Measure</h3>
+      <p>We come to your site and take exact measurements — no guesswork, no wrong-size glass delivered.</p>
     </div>
-    <div class="process-row">
-      <div class="process-step reveal">
-        <span class="num">01 / MEASURE</span>
-        <h3>Measure</h3>
-        <p>We come to your site and take exact measurements — no guesswork, no wrong-size glass.</p>
-      </div>
-      <div class="process-step reveal">
-        <span class="num">02 / CUT</span>
-        <h3>Cut</h3>
-        <p>Glass is cut and edged to your exact specification — clear, frosted, tinted or mirrored.</p>
-      </div>
-      <div class="process-step reveal">
-        <span class="num">03 / FIT</span>
-        <h3>Fit</h3>
-        <p>Our team installs on-site, fitting hardware, frames and seals properly the first time.</p>
-      </div>
-      <div class="process-step reveal">
-        <span class="num">04 / FINISH</span>
-        <h3>Finish</h3>
-        <p>Final clean, check and walkthrough — your glass is ready to use straight away.</p>
-      </div>
+    <div class="ps reveal d1">
+      <div class="ps-num">2</div>
+      <h3>Cut</h3>
+      <p>Glass is cut and edged to your exact specification — clear, frosted, tinted or mirrored finish.</p>
+    </div>
+    <div class="ps reveal d2">
+      <div class="ps-num">3</div>
+      <h3>Fit</h3>
+      <p>Our team installs on-site, fitting hardware, frames and seals properly the first time.</p>
+    </div>
+    <div class="ps reveal d3">
+      <div class="ps-num">4</div>
+      <h3>Finish</h3>
+      <p>Final clean, check and walkthrough — your glass is ready to use the same day.</p>
     </div>
   </div>
 </section>
 
+<!-- WHY US -->
 <section class="why" id="why">
-  <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">WHY CHOOSE MILLENNIUM</span>
-      <h2>Quality you can see through.</h2>
+  <div class="sh reveal">
+    <div class="sh-ey">Why Choose Millennium</div>
+    <h2>Quality you can <em>see through.</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="wc reveal">
+      <div class="wc-ico"><svg viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 6-3 12M15 3l-3 6 3 12"/></svg></div>
+      <div>
+        <h3>Premium Materials</h3>
+        <p>We use toughened safety glass and certified hardware on every job — no shortcuts that show up later.</p>
+      </div>
     </div>
-    <div class="why-grid">
-      <div class="why-item reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 6-3 12M15 3l-3 6 3 12"/></svg></div>
-        <div>
-          <h3>Quality materials</h3>
-          <p>We use toughened safety glass and certified hardware on every job — no shortcuts that show up later.</p>
-        </div>
+    <div class="wc reveal d1">
+      <div class="wc-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 1 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4z"/></svg></div>
+      <div>
+        <h3>Expert Installation</h3>
+        <p>Measured, cut and fitted by technicians who've done this hundreds of times — clean lines, proper seals.</p>
       </div>
-      <div class="why-item reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 1 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4z"/></svg></div>
-        <div>
-          <h3>Expert installation</h3>
-          <p>Measured, cut and fitted by technicians who've done this hundreds of times — clean lines, proper seals.</p>
-        </div>
+    </div>
+    <div class="wc reveal d2">
+      <div class="wc-ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/></svg></div>
+      <div>
+        <h3>Durable &amp; Reliable</h3>
+        <p>Built to handle daily use in busy homes, shops and offices — not just to look good on day one.</p>
       </div>
-      <div class="why-item reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/></svg></div>
-        <div>
-          <h3>Durable &amp; reliable</h3>
-          <p>Built to handle daily use in busy homes, shops and offices — not just to look good on day one.</p>
-        </div>
-      </div>
-      <div class="why-item reveal">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <div>
-          <h3>Satisfaction guaranteed</h3>
-          <p>If something isn't right, we come back and fix it. Simple as that.</p>
-        </div>
+    </div>
+    <div class="wc reveal d3">
+      <div class="wc-ico"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div>
+        <h3>Satisfaction Guaranteed</h3>
+        <p>If something isn't right, we come back and fix it. No arguments, no extra charge.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="contact__inner">
+  <div class="contact-in">
     <div class="reveal">
-      <span class="eyebrow">GET IN TOUCH</span>
-      <h2>Tell us what needs glass — we'll handle the rest.</h2>
+      <div class="sh-ey">Get In Touch</div>
+      <h2>Tell us what needs glass — <em>we'll handle the rest.</em></h2>
       <p class="lede">Send a few photos and rough measurements on WhatsApp, or call us to arrange a free site visit anywhere in and around Nairobi.</p>
-      <div class="contact__ctas">
-        <a class="btn btn--primary" href="https://wa.me/254711908645" target="_blank" rel="noopener">Message us on WhatsApp</a>
-        <a class="btn btn--ghost" href="tel:+254711908645">Call 0711 908 645</a>
+      <div class="contact-ctas">
+        <a class="btn btn--gold" href="https://wa.me/254711908645" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.852 2C6.477 2 2.089 6.388 2.089 11.763c0 1.787.468 3.505 1.356 5.012L2 22l5.353-1.406A9.749 9.749 0 0 0 11.852 21.526C17.228 21.526 21.614 17.138 21.614 11.763S17.228 2 11.852 2z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a class="btn btn--outline" href="tel:+254711908645">Call 0711 908 645</a>
       </div>
     </div>
-    <div class="contact-card reveal">
-      <div class="row"><span class="label">Business</span><span class="value">Millennium Glasses Ltd</span></div>
-      <div class="row"><span class="label">Location</span><span class="value">Embakasi, Nairobi</span></div>
-      <div class="row"><span class="label">Phone / WhatsApp</span><span class="value">0711 908 645</span></div>
-      <div class="row"><span class="label">Services</span><span class="value">Partitions · Mirrors · Showers · Windows &amp; Doors · Repairs</span></div>
-      <div class="row"><span class="label">Serving</span><span class="value">Homes · Offices · Commercial</span></div>
+    <div class="cc reveal d2">
+      <div class="cc-row"><div class="l">Business</div><div class="v">Millennium Glasses Ltd</div></div>
+      <div class="cc-row"><div class="l">Location</div><div class="v">Embakasi, Nairobi</div></div>
+      <div class="cc-row"><div class="l">Phone / WhatsApp</div><div class="v">0711 908 645</div></div>
+      <div class="cc-row"><div class="l">Services</div><div class="v">Partitions · Mirrors · Showers · Windows &amp; Doors · Repairs</div></div>
+      <div class="cc-row"><div class="l">Serving</div><div class="v">Homes · Offices · Commercial</div></div>
     </div>
   </div>
-  <div class="container footer-bottom">
-    <span class="brand">MILLENNIUM GLASSES LTD</span>
-    <span>Clear Vision. Quality Solution.</span>
-    <span>© 2026 Millennium Glasses Ltd</span>
-  </div>
-  <div class="container footer-credit">
-    Built by <a href="#" target="_blank" rel="noopener">Jackson Web Solutions</a>
-  </div>
 </section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="ft-brand">Millennium Glasses Ltd</div>
+  <div class="ft-copy">© 2026 · Clear Vision. Quality Solution.</div>
+  <div class="ft-cr">Built by <a href="#" target="_blank" rel="noopener">Jackson Web Solutions</a></div>
+</footer>
 
 <script>
-  // intro: glass panels part to reveal the page
-  const intro = document.getElementById('intro');
-  if (intro) {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      intro.remove();
-      document.body.classList.remove('intro-active');
-    } else {
-      window.addEventListener('load', () => {
-        setTimeout(() => intro.classList.add('is-leaving'), 650);
-        setTimeout(() => {
-          intro.classList.add('is-hidden');
-          document.body.classList.remove('intro-active');
-        }, 1650);
-      });
-    }
-  }
+/* ── CURSOR ── */
+const cDot = document.getElementById('c-dot');
+const cRing = document.getElementById('c-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; });
+(function tick(){
+  rx += (mx-rx)*.12; ry += (my-ry)*.12;
+  if(cDot){ cDot.style.left=mx+'px'; cDot.style.top=my+'px'; }
+  if(cRing){ cRing.style.left=rx+'px'; cRing.style.top=ry+'px'; }
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button,.gi,.svc-card,.sv,.wc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cRing&&cRing.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>cRing&&cRing.classList.remove('hov'));
+});
 
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 30);
+/* ── LOADER ── */
+const loader = document.getElementById('loader');
+const lBar = document.getElementById('lBar');
+const reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(reduced){
+  loader&&loader.remove();
+  document.body.classList.remove('loading');
+} else {
+  if(lBar) setTimeout(()=>lBar.style.width='100%', 80);
+  window.addEventListener('load',()=>{
+    setTimeout(()=>{ loader&&loader.classList.add('leaving'); document.body.classList.remove('loading'); }, 900);
+    setTimeout(()=>{ loader&&loader.classList.add('gone'); }, 2100);
   });
+}
 
-  // mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+/* ── NAV ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
 
-  // reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const burg = document.getElementById('navBurg');
+const navLinks = document.getElementById('navLinks');
+burg&&burg.addEventListener('click',()=>{
+  const o = navLinks.classList.toggle('open');
+  burg.classList.toggle('open',o);
+  burg.setAttribute('aria-expanded',o);
+});
+navLinks&&navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navLinks.classList.remove('open');
+  burg&&burg.classList.remove('open');
+}));
+
+/* ── REVEAL ON SCROLL ── */
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vis'); ro.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* ── GALLERY TABS ── */
+const tabs = document.querySelectorAll('.gtab');
+const gitems = document.querySelectorAll('.gi[data-cat]');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const f = tab.dataset.filter;
+    gitems.forEach(gi=>{ gi.classList.toggle('hidden', f!=='all' && gi.dataset.cat!==f); });
+  });
+});
+
+/* ── COUNT-UP ── */
+const cuEls = document.querySelectorAll('.count-up');
+const cuObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix||'+';
+    let start = null;
+    const dur = 2000;
+    const step = ts=>{
+      if(!start) start=ts;
+      const p = Math.min((ts-start)/dur,1);
+      const ease = 1-Math.pow(1-p,3);
+      el.textContent = Math.floor(ease*target)+suffix;
+      if(p<1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    cuObs.unobserve(el);
+  });
+},{threshold:.5});
+cuEls.forEach(el=>cuObs.observe(el));
 </script>
 </body>
 </html>
